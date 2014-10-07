@@ -7,6 +7,7 @@ let g:ycm_server_keep_logfiles = 1
 let g:ycm_server_log_level = 'debug'
 Plugin 'gmarik/vundle'
 Plugin 'tpope/vim-fugitive'
+Plugin 'gregsexton/gitv'
 Plugin 'tomasr/molokai'
 Plugin 'kien/ctrlp.vim'
 Plugin 'sjl/gundo.vim'
@@ -71,7 +72,6 @@ endif
 
 set laststatus=2
 let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme= "powerlineish"
 
 set t_Co=256
@@ -81,3 +81,8 @@ map <C-n> :NERDTreeToggle<CR>
 nnoremap <F5> :GundoToggle<CR>
 
 let g:pymode_folding = 0 
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\u3000"
