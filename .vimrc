@@ -1,22 +1,18 @@
 set nocompatible " be iMproved
 filetype off " required!
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-let g:vundle_default_git_proto='git'
-let g:ycm_server_keep_logfiles = 1
-let g:ycm_server_log_level = 'debug'
+Plugin 'gmarik/Vundle.vim'
 Plugin 'gmarik/vundle'
-Plugin 'tpope/vim-fugitive'
-Plugin 'gregsexton/gitv'
-Plugin 'tomasr/molokai'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'kien/ctrlp.vim'
 Plugin 'sjl/gundo.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
-Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
 Plugin 'klen/python-mode'
-Plugin 'Gundo'
+Plugin 'Yggdroot/indentLine'
 call vundle#end()
 
 " ==========================================================
@@ -72,17 +68,34 @@ endif
 
 set laststatus=2
 let g:airline_powerline_fonts = 1
-let g:airline_theme= "powerlineish"
+let g:airline_theme= "solarized"
 
 set t_Co=256
-colorscheme molokai
+colorscheme solarized
+let g:solarized_termcolors=256
 
-map <C-n> :NERDTreeToggle<CR>
 nnoremap <F5> :GundoToggle<CR>
 
 let g:pymode_folding = 0 
+let g:pymode_rope = 0
 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\u3000"
+
+set completeopt-=preview
+set wildmenu
+let g:ycm_auto_trigger = 0
+setlocal omnifunc=pythoncomplete
+nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+set wildignore+=*.pyc
+
+set relativenumber
+set number
+
+" find merge conflict markers
+nmap <silent> <Leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
+
+let g:ycm_disable_for_files_larger_than_kb = 10000
