@@ -13,6 +13,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'bling/vim-airline'
 Plugin 'klen/python-mode'
 Plugin 'Yggdroot/indentLine'
+Plugin 'majutsushi/tagbar'
 call vundle#end()
 
 " ==========================================================
